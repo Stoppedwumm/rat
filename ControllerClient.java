@@ -39,7 +39,7 @@ public class ControllerClient {
                 try {
                     String messageFromServer;
                     while (running && (messageFromServer = in.readLine()) != null) {
-                        System.out.println("\n[Server/Agent Response]: " + messageFromServer);
+                        System.out.println("\n[Server/Agent Response]: " + messageFromServer.replace("#nl#", "\n"));
                         System.out.print("Controller> "); // Re-prompt
                     }
                 } catch (IOException e) {
