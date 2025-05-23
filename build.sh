@@ -59,9 +59,9 @@ echo Generating checksums
 
 # cd into dist *after* all files are moved there
 cd dist
-md5sum Server.jar > Server.jar.md5sum
-md5sum AgentClient.jar > AgentClient.jar.md5sum
-md5sum ControllerClient.jar > ControllerClient.jar.md5sum
+md5sum Server.jar > Server.jar.md5
+md5sum AgentClient.jar > AgentClient.jar.md5
+md5sum ControllerClient.jar > ControllerClient.jar.md5
 
 END=$(date +%s)
 DIFF=$(( $END - $START ))
