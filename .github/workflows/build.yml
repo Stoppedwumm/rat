@@ -21,3 +21,4 @@ jobs:
                   files: |
                       dist/*.jar
                       dist/*.md5sum
+                      validate.sh
