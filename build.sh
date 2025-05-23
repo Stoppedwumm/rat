@@ -1,7 +1,8 @@
 #!/bin/bash
 
 set -e
-set -o pipefail
+
+# pipefail remove because fucking github actions and stuff
 
 START=$(date +%s)
 echo Build starting
@@ -37,7 +38,7 @@ echo Building server
 mvn compile # Compile first to ensure dependencies are downloaded/checked
 mvn clean compile assembly:single # Then clean and build the fat jar
 
-mv target/rat-*-SNAPSHOT-jar-with-dependencies.jar dist/Server.jar
+mv target/rat-*-jar-with-dependencies.jar dist/Server.jar
 
 echo Server built
 echo Building Agent
