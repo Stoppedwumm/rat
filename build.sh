@@ -1,3 +1,8 @@
+#!/bin/bash
+
+set -e
+set -o pipefail
+
 START=$(date +%s)
 echo Build starting
 # check if java is installed
@@ -32,7 +37,7 @@ echo Building server
 mvn compile # Compile first to ensure dependencies are downloaded/checked
 mvn clean compile assembly:single # Then clean and build the fat jar
 
-mv target/rat-1.0-SNAPSHOT-jar-with-dependencies.jar dist/Server.jar
+mv target/rat-*-SNAPSHOT-jar-with-dependencies.jar dist/Server.jar
 
 echo Server built
 echo Building Agent
