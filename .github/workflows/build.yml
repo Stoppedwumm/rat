@@ -19,4 +19,6 @@ jobs:
               uses: softprops/action-gh-release@v1
               with:
                   files: |
-                      build/*.jar
+                      build/Server.jar
+                      build/AgentClient.jar
+                      build/ControllerClient.jar

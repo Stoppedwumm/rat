@@ -48,6 +48,14 @@ jar cvfe dist/ControllerClient.jar ControllerClient build/ControllerClient.class
 
 echo Controller built
 
+echo Build complete
+echo Generating checksums
+
+cd dist
+md5sum Server.jar > Server.jar.md5sum
+md5sum AgentClient.jar > AgentClient.jar.md5sum
+md5sum ControllerClient.jar > ControllerClient.jar.md5sum
+
 END=$(date +%s)
 DIFF=$(( $END - $START ))
 echo "It took $DIFF seconds"
