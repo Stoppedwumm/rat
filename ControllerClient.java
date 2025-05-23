@@ -85,6 +85,16 @@ public class ControllerClient {
                     System.out.println("  exit         - Disconnect and exit.");
                 } else if (trimmedInput.isEmpty()){
                     // just re-prompt
+                } else if (trimmedInput.toLowerCase().startsWith("cmdtoall ")) {
+                    // Format: relay <targetAgentId> <message>
+                    String[] parts = trimmedInput.split(" ", 2);
+                    if (parts.length == 2) {
+                        String message = parts[1];
+                        out.println("RELAY_ALL " + message);
+                    } else {
+                        System.out.println("Invalid relay format. Use: relay <targetAgentId> <message>");
+                    }
+
                 }
                 else {
                     System.out.println("Unknown command. Type 'help'.");
