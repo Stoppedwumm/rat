@@ -92,7 +92,6 @@ public class AgentClient {
 
         } catch (UnknownHostException e) {
             System.err.println("Don't know about host " + SERVER_HOSTNAME);
-            e.printStackTrace();
         } catch (IOException e) {
             if (running) {
                 System.err.println("Agent I/O error or connection lost: " + e.getMessage());
