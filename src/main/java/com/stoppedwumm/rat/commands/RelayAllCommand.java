@@ -12,10 +12,18 @@ public class RelayAllCommand implements ServerCommand {
             clientHandler.sendMessage("SERVER_ERROR: Invalid RELAY command format. Use: " + getUsage());
             return;
         }
+
+        String[] modifiedArgs = Arrays.copyOfRange(args, 0, args.length);
+
+        modifiedArgs[0] = modifiedArgs[0].toUpperCase();
+
+        String finalString = String.join(" ", Arrays.copyOfRange(modifiedArgs, 0, modifiedArgs.length));
+        System.out.println(finalString);
         // Re-join the rest of the arguments as the message, in case the message has spaces
-        String messageToRelay = String.join(" ", Arrays.copyOfRange(args, 1, args.length));
+        String messageToRelay = finalString;
         
-        serverInstance.broadcastMessage(messageToRelay, clientHandler.getClientId());
+        // get all clients
+        serverInstance.broadcastMessage("FROM " + clientHandler.getClientId() + ": " + messageToRelay, clientHandler.getClientId());
     }
 
     @Override
