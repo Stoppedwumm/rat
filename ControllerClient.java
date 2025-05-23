@@ -80,9 +80,10 @@ public class ControllerClient {
                     }
                 } else if (trimmedInput.equalsIgnoreCase("help")) {
                     System.out.println("Available commands:");
-                    System.out.println("  list         - List connected agent clients.");
+                    System.out.println("  list           - List connected agent clients.");
                     System.out.println("  cmd <id> <cmd> - Send <cmd> to agent with <id>.");
-                    System.out.println("  exit         - Disconnect and exit.");
+                    System.out.println("  cmdtoall <cmd> - Send <cmd> to all agent clients.");
+                    System.out.println("  exit           - Disconnect and exit.");
                 } else if (trimmedInput.isEmpty()){
                     // just re-prompt
                 } else if (trimmedInput.toLowerCase().startsWith("cmdtoall ")) {
