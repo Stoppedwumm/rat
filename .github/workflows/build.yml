@@ -1,0 +1,22 @@
+# build an image on release and append the files
+
+on:
+    release:
+        types: [published]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            # set up java
+            - uses: actions/setup-java@v1
+              with:
+                  java-version: 21
+            - name: Build
+              run: sh build.sh
+            - name: Update release
+              uses: softprops/action-gh-release@v1
+              with:
+                  files: |
+                      build/*.jar
