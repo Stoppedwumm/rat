@@ -2,6 +2,8 @@
 
 set -e
 
+# pipefail remove because fucking github actions and stuff
+
 START=$(date +%s)
 echo Build starting
 # check if java is installed
