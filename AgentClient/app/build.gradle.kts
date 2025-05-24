@@ -23,6 +23,8 @@ dependencies {
 
     // This dependency is used by the application.
     implementation(libs.guava)
+    implementation("org.bouncycastle:bcpg-jdk15on:1.70")
+    implementation("org.bouncycastle:bcprov-jdk15on:1.70")
 }
 
 // Apply a specific Java toolchain to ease working on different environments.

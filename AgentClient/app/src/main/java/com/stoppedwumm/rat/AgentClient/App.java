@@ -8,8 +8,15 @@ import java.lang.management.ManagementFactory;
 import java.lang.management.OperatingSystemMXBean;
 import java.net.Socket;
 import java.net.UnknownHostException; // For more detailed info if needed
+import org.bouncycastle.openpgp.*;
+import org.bouncycastle.openpgp.jcajce.JcaPGPObjectFactory;
+import org.bouncycastle.openpgp.operator.jcajce.JcaPGPContentVerifierBuilderProvider;
+import org.bouncycastle.openpgp.operator.jcajce.JcaKeyFingerprintCalculator;
+import org.bouncycastle.bcpg.ArmoredInputStream;
+import com.stoppedwumm.rat.Sig.SignatureVerifier;
 
 public class App {
+    
     private static final String SERVER_HOSTNAME = "localhost";
     private static final int SERVER_PORT = 3000;
     private static String myClientId = null;
