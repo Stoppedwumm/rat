@@ -43,7 +43,7 @@ echo Server built
 echo Building Agent
 
 cd AgentClient
-if [ $# -eq 1 ] && [ $1 == "--prebuilt" ]; then
+if [ "$#" -eq 1 ] && [ "$1" == "--prebuilt" ]; then
     echo "Using prebuilt agent"
     echo '{ "prebuilt": true }' > app/src/main/resources/config.json
 else
