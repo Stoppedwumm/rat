@@ -1,3 +1,5 @@
+package com.stoppedwumm.rat.ControllerClient;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -5,7 +7,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-public class ControllerClient {
+public class App {
     private static final String SERVER_HOSTNAME = "localhost";
     private static final int SERVER_PORT = 3000;
     private static String myControllerId = null;
@@ -13,6 +15,7 @@ public class ControllerClient {
     private static BufferedReader in;
     private static BufferedReader consoleReader;
     private static volatile boolean running = true;
+
 
     public static void main(String[] args) {
         System.out.println("Controller Client starting...");

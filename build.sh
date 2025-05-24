@@ -30,7 +30,6 @@ if [ -d build ]; then
 fi
 
 mkdir dist
-mkdir build
 
 echo Building server
 
@@ -43,20 +42,18 @@ mv target/rat-*-jar-with-dependencies.jar dist/Server.jar
 echo Server built
 echo Building Agent
 
-# build the agent
-javac -d build AgentClient.java
-# --- FIX: Use subshell to change directory for jar command ---
-(cd build && jar cvfe ../dist/AgentClient.jar AgentClient AgentClient.class)
-# -------------------------------------------------------------
+cd AgentClient
+./gradlew clean
+./gradlew jar
+mv app/build/libs/app.jar ../dist/AgentClient.jar
 
 echo Agent built
 echo Building Controller
 
-# build the controller
-javac -d build ControllerClient.java
-# --- FIX: Use subshell to change directory for jar command ---
-(cd build && jar cvfe ../dist/ControllerClient.jar ControllerClient ControllerClient.class)
-# -------------------------------------------------------------
+cd ../ControllerClient
+./gradlew clean
+./gradlew jar
+mv app/build/libs/app.jar ../dist/ControllerClient.jar
 
 echo Controller built
 
@@ -64,7 +61,7 @@ echo Build complete
 echo Generating checksums
 
 # cd into dist *after* all files are moved there
-cd dist
+cd ../dist
 md5sum Server.jar > Server.jar.md5
 md5sum AgentClient.jar > AgentClient.jar.md5
 md5sum ControllerClient.jar > ControllerClient.jar.md5
