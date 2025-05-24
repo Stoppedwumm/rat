@@ -43,9 +43,9 @@ echo Server built
 echo Building Agent
 
 cd AgentClient
-echo "{
+echo '{
     "prebuilt": true
-}" > app/src/main/resources/config.json
+}' > app/src/main/resources/config.json
 ./gradlew clean
 ./gradlew jar
 mv app/build/libs/app.jar ../dist/AgentClient.jar

@@ -13,7 +13,6 @@ class RessourceManager {
         ObjectMapper mapper = new ObjectMapper();
         try {
             JsonNode rootNode = mapper.readTree(R);
-            System.out.println(rootNode.get("prebuilt"));
             return rootNode;
         } catch (JsonProcessingException e) {
             e.printStackTrace();
