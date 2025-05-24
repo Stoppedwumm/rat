@@ -43,9 +43,18 @@ echo Server built
 echo Building Agent
 
 cd AgentClient
-echo '{
-    "prebuilt": true
-}' > app/src/main/resources/config.json
+if [ $# -eq 1 ] && [ $1 == "--prebuilt" ]; then
+    echo "Using prebuilt agent"
+    echo '{
+        "prebuilt": true
+    }' > app/src/main/resources/config.json
+else
+    echo "Using custom agent"
+    echo '{
+        "prebuilt": false
+    }' > app/src/main/resources/config.json
+fi
+
 ./gradlew clean
 ./gradlew jar
 mv app/build/libs/app.jar ../dist/AgentClient.jar
