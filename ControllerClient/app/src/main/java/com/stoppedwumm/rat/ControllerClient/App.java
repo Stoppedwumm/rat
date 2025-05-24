@@ -17,30 +17,6 @@ public class App {
     private static volatile boolean running = true;
 
 
-/*************  ✨ Windsurf Command ⭐  *************/
-        /**
-         * The main entry point for the Controller Client.
-         *
-         * <p>Connects to the server and assigns a unique ID to this controller client.
-         * Runs a command loop for the controller, allowing the user to send commands
-         * to agents and receive responses.
-         *
-         * <p>Available commands are: list, cmd &lt;targetAgentId&gt; &lt;command&gt;,
-         * cmdtoall &lt;command&gt;, exit, and help.
-         *
-         * <p>After connecting, the controller supports:
-         * - list - List connected agents
-         * - cmd <agentId> <command> - Send <command> to specific agent (e.g., cmd 123 GET_SYS_INFO or cmd 123 EXEC whoami)
-         * - cmdtoall <command> - Broadcast <command> to all agents
-         * - exit - Disconnect controller
-         * - help - Show help
-         *
-         * <p>Agent Supported Commands:
-         * - GET_SYS_INFO - Returns system information (OS, memory, CPU, etc.)
-         *
-         * @param args Ignored.
-         */
-/*******  faab5861-67a7-456c-8268-0021af75b6cc  *******/
     public static void main(String[] args) {
         System.out.println("Controller Client starting...");
 
