@@ -164,13 +164,18 @@ public class App {
     private static String executeSystemCommand(String command) {
         try {
             Process process = Runtime.getRuntime().exec(command);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
             StringBuilder output = new StringBuilder();
-            String line;
-            while ((line = reader.readLine()) != null) {
-                output.append(line).append("#nl#");
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+                 BufferedReader errorReader = new BufferedReader(new InputStreamReader(process.getErrorStream()))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    output.append(line).append("#nl#");
+                }
+                while ((line = errorReader.readLine()) != null) {
+                    output.append("ERROR: ").append(line).append("#nl#");
+                }
             }
-            reader.close();
+            process.waitFor();
             return output.toString();
         } catch (IOException e) {
             return "Error executing command: " + e.getMessage();
