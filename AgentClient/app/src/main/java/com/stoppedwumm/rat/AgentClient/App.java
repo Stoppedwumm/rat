@@ -9,16 +9,30 @@ import java.lang.management.OperatingSystemMXBean;
 import java.net.Socket;
 import java.net.UnknownHostException; // For more detailed info if needed
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.BooleanNode;
+
 public class App {
-    private static final String SERVER_HOSTNAME = "localhost";
-    private static final int SERVER_PORT = 3000;
+    
+    private static String SERVER_HOSTNAME = "localhost";
+    private static int SERVER_PORT = 3000;
     private static String myClientId = null;
     private static PrintWriter out;
     private static BufferedReader in;
     private static volatile boolean running = true;
+    private static JsonNode cfg = null;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        cfg = RessourceManager.readConfig();
         System.out.println("Agent Client (Payload) starting...");
+        if (args.length == 2 && args[0] != null && args[1] != null && cfg.get("prebuilt") != BooleanNode.getTrue()) {
+            SERVER_HOSTNAME = args[0];
+            SERVER_PORT = Integer.parseInt(args[1]);
+        } else {
+            System.out.println("Agent Client (Payload) running in localhost mode");
+            SERVER_HOSTNAME = "localhost";
+            SERVER_PORT = 3000;
+        }
 
         try (Socket socket = new Socket(SERVER_HOSTNAME, SERVER_PORT)) {
             out = new PrintWriter(socket.getOutputStream(), true);

@@ -14,7 +14,7 @@ jobs:
               with:
                   java-version: 24
             - name: Build
-              run: sh build.sh
+              run: sh build.sh --prebuilt
             - name: Update release
               uses: softprops/action-gh-release@v1
               with:
