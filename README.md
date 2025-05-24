@@ -92,8 +92,8 @@ To add new commands, update the `AgentClient.java` switch statement in the main 
 
 This project is for **educational and research purposes only**. Running or modifying this code on systems without explicit permission is **illegal** and unethical. The code executes arbitrary commands on agent hosts and is **not secure** for production use.
 
-## Why can't I use other hosts or ports
-You're using the prebuilt binaries or compile using the --prebuilt flag. That is there to prevent little Script Kiddies (yes Timmy, thats you!) from spying people they've got beef with. If you compile it yourself, you are responsible. I don't care what you did with it. I'm just out, and your completely liable for the shit you do with it. This was only developed because I was bored, I have no malicious intent. (NTTS, I know your roasting me, but at this point idc. go on, it's not my fault)
+## Host and Port Restrictions
+Prebuilt binaries and builds using the --prebuilt flag have restricted host and port configurations as a security measure. To use custom hosts and ports, you must compile the source code yourself. Please note that by doing so, you assume full responsibility for how the software is used. This project was created for educational purposes only.
 
 ## License
 
