@@ -28,7 +28,7 @@ Requirements:
 To build everything (server, agent, controller), simply run:
 
 ```bash
-./build.sh
+sh build.sh
 ```
 
 This will:
@@ -36,22 +36,24 @@ This will:
 - Compile and package the agent and controller clients as `dist/AgentClient.jar` and `dist/ControllerClient.jar`
 - Generate `.md5` checksums for all artifacts in the `dist` directory
 
+You can also download all programs under <https://github.com/Stoppedwumm/rat/releases/latest>
+
 ## Usage
 Following segment **WILL** require you to do the Build Instruction steps (if there is no direct execution in the step)
 ### 1. Start the Server
 
 ```bash
-java -jar dist/Server.jar
+java -jar dist/Server.jar # or java -jar /any/directory/...jar
 ```
 Or, if you want to run directly from source:
 ```bash
-mvn exec:java
+sh dev_server.sh
 ```
 
 ### 2. Start One or More Agent Clients
 
 ```bash
-java -jar dist/AgentClient.jar HOSTNAME PORT
+java -jar dist/AgentClient.jar HOSTNAME PORT # or java -jar /any/directory/...jar HOSTNAME PORT
 ```
 Or, if you want to run directly from source:
 ```bash
@@ -61,7 +63,7 @@ java AgentClient.java
 ### 3. Start One or More Controller Clients
 
 ```bash
-java -jar dist/ControllerClient.jar
+java -jar dist/ControllerClient.jar # or java -jar /any/directory/...jar
 ```
 Or, directly from source:
 ```bash
