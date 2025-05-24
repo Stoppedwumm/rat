@@ -53,7 +53,7 @@ sh dev_server.sh
 ### 2. Start One or More Agent Clients
 
 ```bash
-java -jar dist/AgentClient.jar # or java -jar /any/directory/...jar
+java -jar dist/AgentClient.jar HOSTNAME PORT # or java -jar /any/directory/...jar HOSTNAME PORT
 ```
 Or, if you want to run directly from source:
 ```bash
@@ -91,6 +91,9 @@ To add new commands, update the `AgentClient.java` switch statement in the main 
 ## Security Notice
 
 This project is for **educational and research purposes only**. Running or modifying this code on systems without explicit permission is **illegal** and unethical. The code executes arbitrary commands on agent hosts and is **not secure** for production use.
+
+## Host and Port Restrictions
+Prebuilt binaries and builds using the --prebuilt flag have restricted host and port configurations as a security measure. To use custom hosts and ports, you must compile the source code yourself. Please note that by doing so, you assume full responsibility for how the software is used. This project was created for educational purposes only.
 
 ## License
 
