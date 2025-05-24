@@ -51,7 +51,7 @@ mvn exec:java
 ### 2. Start One or More Agent Clients
 
 ```bash
-java -jar dist/AgentClient.jar
+java -jar dist/AgentClient.jar HOSTNAME PORT
 ```
 Or, if you want to run directly from source:
 ```bash
@@ -89,6 +89,9 @@ To add new commands, update the `AgentClient.java` switch statement in the main 
 ## Security Notice
 
 This project is for **educational and research purposes only**. Running or modifying this code on systems without explicit permission is **illegal** and unethical. The code executes arbitrary commands on agent hosts and is **not secure** for production use.
+
+## Why can't I use other hosts or ports
+You're using the prebuilt binaries or compile using the --prebuilt flag. That is there to prevent little Script Kiddies (yes Timmy, thats you!) from spying people they've got beef with. If you compile it yourself, you are responsible. I don't care what you did with it. I'm just out, and your completely liable for the shit you do with it. This was only developed because I was bored, I have no malicious intent. (NTTS, I know your roasting me, but at this point idc. go on, it's not my fault)
 
 ## License
 
